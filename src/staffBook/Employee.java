@@ -63,11 +63,11 @@ public class Employee {
         if (this == other) return true;
         if (other == null || getClass() != other.getClass()) return false;
         Employee employee = (Employee) other;
-        return id == employee.id && Float.compare(employee.salary, salary) == 0 && fio.equals(employee.fio) && department.equals(employee.department);
+        return id == employee.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, fio, department, salary);
+        return Objects.hash(id);
     }
 }
