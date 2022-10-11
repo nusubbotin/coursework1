@@ -1,5 +1,7 @@
 package staffBook;
 
+import java.util.Objects;
+
 public class Employee {
     private static int sequence = 0;
 
@@ -53,11 +55,19 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", fio='" + fio + '\'' +
-                ", department=" + department +
-                ", salary=" + salary +
-                '}' + "\n";
+        return "{ id=" + id + ", fio=" + fio + ", department=" + department + ", salary=" + salary + "}\n" ;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (other == null || getClass() != other.getClass()) return false;
+        Employee employee = (Employee) other;
+        return id == employee.id && Float.compare(employee.salary, salary) == 0 && fio.equals(employee.fio) && department.equals(employee.department);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, fio, department, salary);
     }
 }

@@ -1,5 +1,7 @@
 package staffBook;
 
+import java.util.Objects;
+
 public class Department {
     private String code;
     private String name;
@@ -27,9 +29,19 @@ public class Department {
 
     @Override
     public String toString() {
-        return "Department{" +
-                "code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+        return "{code=" + code + " name=" + name + "} ";
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (other == null || getClass() != other.getClass()) return false;
+        Department that = (Department) other;
+        return code.equals(that.code) && name.equals(that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(code, name);
     }
 }
